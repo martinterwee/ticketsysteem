@@ -1,0 +1,37 @@
+﻿@model IEnumerable<TicketSysteemMVC5.Models.Applicatie>
+
+@{
+    ViewBag.Title = "Applicaties";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Nieuwe Applicatie", "Create", null, new { @class = "btn btn-default" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Naam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Beheerder)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Naam)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Beheerder.Naam)
+    </td>
+    <td>
+        @Html.ActionLink("Bewerk", "Edit", new { id = item.Id })
+    </td>
+</tr>
+}
+
+</table>

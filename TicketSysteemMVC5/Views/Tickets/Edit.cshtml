@@ -1,0 +1,70 @@
+﻿@model TicketSysteemMVC5.Models.Ticket
+@{
+    ViewBag.Title = "Bewerk Ticket";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Ticket</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.Klant)
+    @Html.HiddenFor(model => model.Applicatie)
+    @Html.HiddenFor(model => model.Datum)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Klant, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.Klant.Naam)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Applicatie, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.Applicatie.Naam)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Onderwerp, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.Onderwerp)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Omschrijving, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Omschrijving, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Omschrijving, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EnumDropDownListFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-primary" />
+            @Html.ActionLink("Annuleer", "Profiel", "Account", null, new {@class="btn btn-default"})
+        </div>
+    </div>
+</div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

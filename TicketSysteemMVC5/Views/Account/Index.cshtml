@@ -1,0 +1,59 @@
+﻿@model IEnumerable<TicketSysteemMVC5.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "Gebruikers";
+}
+
+<h2>Gebruikers</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Voornaam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tussenvoegsel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Achternaam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefoonnummer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Voornaam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tussenvoegsel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Achternaam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefoonnummer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.ActionLink("Profiel", "Profiel", new { id = item.Id }) |
+            @Html.ActionLink("Bewerk", "Edit", new { id = item.Id }) 
+        </td>
+    </tr>
+}
+
+</table>

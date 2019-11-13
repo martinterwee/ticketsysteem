@@ -1,0 +1,40 @@
+﻿@model TicketSysteemMVC5.Models.Ticket
+
+@{
+    ViewBag.Title = "Sluit Ticket";
+}
+
+<h2>Sluit Ticket</h2>
+
+<h3>Weet u zeker dat deze ticket kan worden gesloten?</h3>
+<div>
+    <h4>Ticket</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Onderwerp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Onderwerp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Omschrijving)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Omschrijving)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+<div class="form-actions no-color">
+    <input type="submit" value="Delete" class="btn btn-default" /> |
+    @Html.ActionLink("Annuleer", "Profiel", "Account", null, new { @class = "btn btn-default" })
+</div>
+    }
+</div>

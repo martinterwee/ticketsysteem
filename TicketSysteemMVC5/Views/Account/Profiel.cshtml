@@ -1,0 +1,65 @@
+﻿@using System.Web.DynamicData
+@model TicketSysteemMVC5.Models.ApplicationUser
+
+@{
+    ViewBag.Title = "Profiel";
+}
+
+<h2>Profiel</h2>
+
+<div>
+    <h3>Gebruiker</h3>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Voornaam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Voornaam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tussenvoegsel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tussenvoegsel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Achternaam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Achternaam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefoonnummer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefoonnummer)
+        </dd>
+        <dt>Wachtwoord:</dt>
+        <dd>
+            [
+                @Html.ActionLink("Wachtwoord wijzigen", "ChangePassword", "Manage")            
+            ]
+        </dd>
+    </dl>
+
+    @Html.Action("GebruikerTickets", new { id = Model.Id})
+
+    @Html.Action("BeheerderApplicaties", new { id = Model.Id})
+</div>

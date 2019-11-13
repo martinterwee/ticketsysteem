@@ -1,0 +1,28 @@
+﻿@model IEnumerable<TicketSysteemMVC5.Models.Applicatie>
+
+<h4>Applicaties</h4>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Naam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Beheerder)
+        </th>
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Naam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Beheerder.Naam)
+            </td>
+        </tr>
+    }
+
+</table>
+

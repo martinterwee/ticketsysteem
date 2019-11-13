@@ -1,0 +1,61 @@
+﻿@model IEnumerable<TicketSysteemMVC5.Models.Ticket>
+
+<h4>Tickets</h4>
+
+@if (User.IsInRole(TicketSysteemMVC5.Config.RoleNames.Klant)) { 
+<p>
+    @Html.ActionLink("Nieuwe Ticket", "Create", "Tickets", null, new { @class = "btn btn-default" })
+</p>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Applicatie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Datum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Onderwerp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Omschrijving)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Klant)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Applicatie.Naam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Datum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Onderwerp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Omschrijving)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Klant.Naam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.ActionLink("Bewerk", "Edit", "Tickets", new { id = item.Id }, null)  |
+                @Html.ActionLink("Sluit", "Delete", "Tickets", new { id = item.Id }, null)
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,62 @@
+﻿@model IEnumerable<TicketSysteemMVC5.Models.Ticket>
+
+@{
+    ViewBag.Title = "Tickets";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Nieuwe Ticket", "Create", null, new { @class = "btn btn-default" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Applicatie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Datum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Onderwerp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Omschrijving)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Klant)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Applicatie.Naam)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Datum)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Onderwerp)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Omschrijving)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Klant.Naam)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Status)
+    </td>
+    <td>
+        @Html.ActionLink("Bewerk", "Edit", new { id = item.Id }) |
+        @Html.ActionLink("Sluit", "Delete", new { id = item.Id })
+    </td>
+</tr>
+}
+
+</table>

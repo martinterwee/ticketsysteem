@@ -1,0 +1,33 @@
+﻿@model TicketSysteemMVC5.Models.Applicatie
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Applicatie</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Naam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Naam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Beheerder)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Beheerder.Naam)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Bewerk", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
